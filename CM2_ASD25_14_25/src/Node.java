@@ -1,9 +1,9 @@
 public class Node {
-    int data;
+    Pasien data;
     Node prev;
     Node next; 
 
-    Node(Node prev, int data, Node next) {
+    Node(Node prev, Pasien data, Node next) {
        this.prev = prev;
        this.data = data;
        this.next = next;

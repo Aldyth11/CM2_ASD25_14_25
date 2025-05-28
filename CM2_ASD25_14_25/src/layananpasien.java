@@ -13,31 +13,30 @@ public class layananpasien {
         return head == null;
     }
 
-    public void tambahPasien(String nama, String nik,  String keluhan) {
-        Pasien newPasien = new Pasien(nama, nik, keluhan);
-        Node newNode = new Node(head, size, head);
-        if (isEmpty()) {
-            System.out.println("Antrian Pasien Kosong");
+    public void tambahPasien(Pasien data) {
+        if (head == null) {
+            head = tail = new Node(null, data, null);
         } else {
-        tail.next = newNode;
-        newNode.prev = tail;
-        tail = newNode;
-
+            Node newNode = new Node(null, data, head);
+            head.prev = newNode;
+            head = newNode;
         }
         size++;
+    }
+    
       
     void tampilkanAntrian() {
-        if (head == null) {
-            System.out.println("Antrian kosong.");
-            return;
-        }
-        System.out.println("-- Antrian Pasien --");
-        Pasien temp = head;
-        while (temp != null) {
-            System.out.println(temp.nama + "\t" + temp.nik + "\t" + temp.keluhan);
-            temp = temp.next;
-        }
+    if (head == null) {
+        System.out.println("Antrian kosong.");
+        return;
     }
+    System.out.println("-- Antrian Pasien --");
+    Node temp = head;  
+    while (temp != null) {
+        System.out.println(temp.data.nama + "\t" + temp.data.nik + "\t" + temp.data.keluhan);
+        temp = temp.next;
+    }
+}
 
     public int size() {
         return size;
