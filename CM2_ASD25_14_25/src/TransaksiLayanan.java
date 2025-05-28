@@ -12,7 +12,7 @@ public class TransaksiLayanan {
     }
 
     public int hitungBiaya() {
-        return durasiLayanan * 10000;
+        return durasiLayanan * 50000;
     }
 
     public void tampilkanInformasi() {
