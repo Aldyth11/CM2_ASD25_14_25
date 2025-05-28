@@ -73,7 +73,7 @@ public class layananpasien {
             System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan);
             current = current.next;
         }
-    }
+
 
     public void tampilRiwayat() {
         if (trsHead == null) {
