@@ -51,16 +51,16 @@ public class layananpasien {
     }
 
     public void tampilkanAntrian() {
-        System.out.println("-- Antrian Pasien --");
-        if (antrianHead == null) {
-            System.out.println("Antrian masih kosong!");
-            return;
-        }
-        NodePasien current = antrianHead;
-        while (current != null) {
-            System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan);
-            current = current.next;
-        }
+    System.out.println("-- Antrian Pasien --");
+    if (antrianHead == null) {
+        System.out.println("Antrian masih kosong!");
+        return;
+    }
+    NodePasien current = antrianHead;
+    while (current != null) {
+        System.out.printf("\tNama", "NIK", "Keluhan");
+        System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan );
+        current = current.next;
     }
 
     public void layaniPasien() {
