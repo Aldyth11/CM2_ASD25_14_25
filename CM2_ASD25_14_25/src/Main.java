@@ -10,6 +10,11 @@ public class Main {
         Dokter dk3 = new Dokter("dr03", "Aam Antanica");
         Dokter dk4 = new Dokter("dr04", "Slamet Sugito");
 
+        layananpasien.tambahDokter(dk1);
+        layananpasien.tambahDokter(dk2);
+        layananpasien.tambahDokter(dk3);
+        layananpasien.tambahDokter(dk4);
+
         while (true) {
             System.out.println("\n== MENU ==");
             System.out.println("1. Tambah Pasien ke Antrian");
@@ -38,11 +43,24 @@ public class Main {
                 case 2:
                     layananpasien.tampilkanAntrian();
                     break;
+            
                 case 3:
-                    layananpasien.layaniPasien();
+                    System.out.print("Masukkan ID Dokter: ");
+                    String idDokter = sc.nextLine(); 
+                    Dokter dokter = layananpasien.pilihDokter(idDokter); 
+                    if (dokter == null) {
+                        System.out.println("Dokter tidak ditemukan!");
+                        break;
+                    }
+
+                    System.out.print("Masukkan durasi layanan (Jam): ");
+                    int durasi = sc.nextInt();
+                    sc.nextLine();
+                    layananpasien.layaniPasien(dokter, durasi); 
                     break;
+
                 case 4:
-                    System.out.println("sisa antrian pasien: " + layananpasien.size());
+                    System.out.println("Total antrian sekarang: " + layananpasien.size());
                     break;
                 case 5:
                     layananpasien.tampilRiwayat();
