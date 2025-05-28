@@ -36,6 +36,18 @@ public class Main {
                 case 2:
                     layananpasien.tampilkanAntrian();
                     break;
+                case 3:
+                    layananpasien.layaniPasien();
+                    break;
+                case 4:
+                    System.out.println("sisa antrian pasien: " + layananpasien.size());
+                    break;
+                case 5:
+                    layananpasien.lihatRiwayat();
+                    break;
+                case 6:
+                    layananpasien.sortRiwayatTransaksi();
+                    break;
                 case 0:
                     System.out.println("Keluar dari program, Terima kasih");
         }
