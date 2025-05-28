@@ -33,6 +33,9 @@ public class Main {
                     Pasien newPasien = new Pasien(nama, nik, keluhan);
                     System.out.println("Pasien masuk ke dalam antrian");
                     break;
+                case 2:
+                    layananpasien.tampilkanAntrian();
+                    break;
                 case 0:
                     System.out.println("Keluar dari program, Terima kasih");
         }
