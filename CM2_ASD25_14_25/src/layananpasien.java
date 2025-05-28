@@ -118,4 +118,14 @@ public class layananpasien {
     public int getJumlahPasien() {
         return size;
     }
+
+    public void tampilRiwayat() {
+        if (head == null) {
+            System.out.println("Antrian riwayat kosong");
+            return;
+        } else {
+            System.out.println("-- Riwayat Transaksi--");
+        
+    }
+}
 }
