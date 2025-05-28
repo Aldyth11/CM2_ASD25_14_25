@@ -58,6 +58,7 @@ public class layananpasien {
     }
     NodePasien current = antrianHead;
     while (current != null) {
+        System.out.printf("\tNama", "NIK", "Keluhan");
         System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan );
         current = current.next;
     }
