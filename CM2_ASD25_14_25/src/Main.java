@@ -43,10 +43,10 @@ public class Main {
                     System.out.println("sisa antrian pasien: " + layananpasien.size());
                     break;
                 case 5:
-                    layananpasien.lihatRiwayat();
+                    layananpasien.tampilRiwayat();
                     break;
                 case 6:
-                    layananpasien.sortRiwayatTransaksi();
+                    layananpasien.urutkanRiwayat();
                     break;
                 case 0:
                     System.out.println("Keluar dari program, Terima kasih");

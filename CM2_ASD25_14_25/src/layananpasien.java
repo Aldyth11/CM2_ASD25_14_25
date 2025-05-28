@@ -28,14 +28,15 @@ public class layananpasien {
 
     public void tambahPasien(Pasien data) {
         NodePasien newNode = new NodePasien(null, data, antrianHead);
-        if (antrianHead != null) {
-            antrianHead.prev = newNode;
-        } else {
-            antrianTail = newNode;
-        }
+         if (antrianHead == null) {
+        antrianHead = antrianTail = newNode;
+    } else {
+        newNode.next = antrianHead;
+        antrianHead.prev = newNode;
         antrianHead = newNode;
-        size++;
     }
+     size++;
+}
 
  
     public void tampilkanDokter() {
@@ -50,13 +51,18 @@ public class layananpasien {
     }
 
     public void tampilkanAntrian() {
-        System.out.println("-- Antrian Pasien --");
-        NodePasien current = antrianHead;
-        while (current != null) {
-            System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan );
-            current = current.next;
-        }
+    System.out.println("-- Antrian Pasien --");
+    if (antrianHead == null) {
+        System.out.println("Antrian masih kosong!");
+        return;
     }
+    NodePasien current = antrianHead;
+    while (current != null) {
+        System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan );
+        current = current.next;
+    }
+}
+
 
     public void layaniPasien() {
         if (antrianTail == null) {
@@ -74,7 +80,16 @@ public class layananpasien {
         size--;
         System.out.println("Pasien " + p.nama + " telah dilayani.");
     }
-
+    
+    public void tampilRiwayat() {
+        if (antrianHead == null) {
+            System.out.println("Antrian riwayat kosong");
+            return;
+        } else {
+            System.out.println("-- Riwayat Transaksi--");
+        
+    }
+}
     public void tambahRiwayat(Pasien p) {
         NodePasien newNode = new NodePasien(null, p, riwayatHead);
         if (riwayatHead != null) {
@@ -83,15 +98,6 @@ public class layananpasien {
             riwayatTail = newNode;
         }
         riwayatHead = newNode;
-    }
-
-    public void tampilkanRiwayat() {
-        System.out.println("-- Riwayat Pasien --");
-        NodePasien current = riwayatHead;
-        while (current != null) {
-            System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan);
-            current = current.next;
-        }
     }
 
     public void urutkanRiwayat() {
@@ -115,17 +121,8 @@ public class layananpasien {
         System.out.println("Riwayat berhasil diurutkan berdasarkan nama pasien.");
     }
 
-    public int getJumlahPasien() {
+    public int size() {
         return size;
     }
 
-    public void tampilRiwayat() {
-        if (head == null) {
-            System.out.println("Antrian riwayat kosong");
-            return;
-        } else {
-            System.out.println("-- Riwayat Transaksi--");
-        
-    }
-}
 }
