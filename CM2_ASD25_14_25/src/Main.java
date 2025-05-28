@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         layananpasien layananpasien = new layananpasien();
@@ -19,7 +20,7 @@ public class Main {
             System.out.println("6. Sort Transaksi (Nama Pasien Desc)");
             System.out.println("0. Keluar");
             System.out.print("Pilihan: ");
-            int Pilihan = sc.nextInt(); 
+            int Pilihan = sc.nextInt();
             sc.nextLine();
 
             switch (Pilihan) {
@@ -31,6 +32,7 @@ public class Main {
                     System.out.print("Keluhan : ");
                     String keluhan = sc.nextLine();
                     Pasien newPasien = new Pasien(nama, nik, keluhan);
+                    layananpasien.tambahPasien(newPasien);
                     System.out.println("Pasien masuk ke dalam antrian");
                     break;
                 case 2:
@@ -50,7 +52,7 @@ public class Main {
                     break;
                 case 0:
                     System.out.println("Keluar dari program, Terima kasih");
+            }
         }
-    }
     }
 }
