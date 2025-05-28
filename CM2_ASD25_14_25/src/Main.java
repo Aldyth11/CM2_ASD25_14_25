@@ -23,6 +23,18 @@ public class Main {
             sc.nextLine();
 
             switch (Pilihan) {
+                case 1:
+                    System.out.print("Input Nama Pasien : ");
+                    String nama = sc.nextLine();
+                    System.out.print("NIK : ");
+                    String nik = sc.nextLine();
+                    System.out.print("Keluhan : ");
+                    String keluhan = sc.nextLine();
+                    Pasien newPasien = new Pasien(nama, nik, keluhan);
+                    System.out.println("Pasien masuk ke dalam antrian");
+                    break;
+                case 0:
+                    System.out.println("Keluar dari program, Terima kasih");
         }
     }
     }
