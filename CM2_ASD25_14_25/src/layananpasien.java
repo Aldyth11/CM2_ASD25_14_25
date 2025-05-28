@@ -1,44 +1,121 @@
 public class layananpasien {
-    Node head;
-    Node tail;
-    int size;
+    NodeDokter dokterHead, dokterTail;
+    NodePasien antrianHead, antrianTail;
+    NodePasien riwayatHead, riwayatTail;
+    int size = 0;
 
-    public layananpasien() {
-        this.head = null;
-        this.size = 0;
-        this.tail = null;
+    public void tambahDokter(Dokter dokter) {
+        NodeDokter newNode = new NodeDokter(null, dokter, null);
+        if (dokterHead == null) {
+            dokterHead = dokterTail = newNode;
+        } else {
+            dokterTail.next = newNode;
+            newNode.prev = dokterTail;
+            dokterTail = newNode;
+        }
     }
 
-    public boolean isEmpty() {
-        return head == null;
+    public Dokter pilihDokter(int index) {
+        int i = 0;
+        NodeDokter current = dokterHead;
+        while (current != null) {
+            if (i == index) return current.data;
+            i++;
+            current = current.next;
+        }
+        return null;
     }
 
     public void tambahPasien(Pasien data) {
-        if (head == null) {
-            head = tail = new Node(null, data, null);
+        NodePasien newNode = new NodePasien(null, data, antrianHead);
+        if (antrianHead != null) {
+            antrianHead.prev = newNode;
         } else {
-            Node newNode = new Node(null, data, head);
-            head.prev = newNode;
-            head = newNode;
+            antrianTail = newNode;
         }
+        antrianHead = newNode;
         size++;
     }
-    
-      
-    void tampilkanAntrian() {
-    if (head == null) {
-        System.out.println("Antrian kosong.");
-        return;
-    }
-    System.out.println("-- Antrian Pasien --");
-    Node temp = head;  
-    while (temp != null) {
-        System.out.println(temp.data.nama + "\t" + temp.data.nik + "\t" + temp.data.keluhan);
-        temp = temp.next;
-    }
-}
 
-    public int size() {
+ 
+    public void tampilkanDokter() {
+        System.out.println("-- Daftar Dokter --");
+        int index = 0;
+        NodeDokter current = dokterHead;
+        while (current != null) {
+            System.out.println(index + ". " + current.data.nama);
+            current = current.next;
+            index++;
+        }
+    }
+
+    public void tampilkanAntrian() {
+        System.out.println("-- Antrian Pasien --");
+        NodePasien current = antrianHead;
+        while (current != null) {
+            System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan );
+            current = current.next;
+        }
+    }
+
+    public void layaniPasien() {
+        if (antrianTail == null) {
+            System.out.println("Antrian kosong.");
+            return;
+        }
+        Pasien p = antrianTail.data;
+        tambahRiwayat(p);
+        if (antrianTail.prev != null) {
+            antrianTail = antrianTail.prev;
+            antrianTail.next = null;
+        } else {
+            antrianHead = antrianTail = null;
+        }
+        size--;
+        System.out.println("Pasien " + p.nama + " telah dilayani.");
+    }
+
+    public void tambahRiwayat(Pasien p) {
+        NodePasien newNode = new NodePasien(null, p, riwayatHead);
+        if (riwayatHead != null) {
+            riwayatHead.prev = newNode;
+        } else {
+            riwayatTail = newNode;
+        }
+        riwayatHead = newNode;
+    }
+
+    public void tampilkanRiwayat() {
+        System.out.println("-- Riwayat Pasien --");
+        NodePasien current = riwayatHead;
+        while (current != null) {
+            System.out.println(current.data.nama + "\t" + current.data.nik + "\t" + current.data.keluhan);
+            current = current.next;
+        }
+    }
+
+    public void urutkanRiwayat() {
+        if (riwayatHead == null || riwayatHead.next == null) return;
+
+        boolean swapped;
+        do {
+            swapped = false;
+            NodePasien current = riwayatHead;
+            while (current.next != null) {
+                if (current.data.nama.compareTo(current.next.data.nama) > 0) {
+                    Pasien temp = current.data;
+                    current.data = current.next.data;
+                    current.next.data = temp;
+                    swapped = true;
+                }
+                current = current.next;
+            }
+        } while (swapped);
+
+        System.out.println("Riwayat berhasil diurutkan berdasarkan nama pasien.");
+    }
+
+    public int getJumlahPasien() {
         return size;
     }
 }
